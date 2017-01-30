@@ -1,0 +1,52 @@
+{
+  "name": "getting-started",
+  "version": "1.0.0",
+  "description": "The repository for the Fabric Composer Getting Started application",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive && npm run bootstrapAssets && npm run listAssets && npm run submitTransaction",
+    "submitTransaction": "node cli.js landregistry submit && node cli.js landregistry list",
+    "listAssets": "node cli.js landregistry list",
+    "bootstrapAssets": "node cli.js landregistry bootstrap",
+    "startHLF": "scripts/start-hyperledger.sh",
+    "stopHLF": "scripts/stop-hyperledger.sh",
+    "teardownHLF": "scripts/teardown.sh",
+    "deployNetwork": "concerto archive create -m @ibm/digitalproperty-network --archiveFile digitalPropertyNetwork.zip && concerto network deploy --archiveFile digitalPropertyNetwork.zip  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && concerto network list -n @ibm/digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
+    "install": "scripts/download-hyperledger.sh && scripts/start-hyperledger.sh && npm run deployNetwork"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:Blockchain-WW-Labs/Concerto-GettingStarted"
+  },
+  "keywords": [
+    "Blockchain",
+    "IBM",
+    "Solutions",
+    "Framework",
+    "getting-started",
+    "Fabric Composer"
+  ],
+  "author": "IBM",
+  "license": "ISC",
+  "dependencies": {
+    "@ibm/concerto-admin": "~0.3.0-0",
+    "@ibm/concerto-client": "~0.3.0-0",
+    "@ibm/digitalproperty-network": "latest",
+    "cli-table": "^0.3.1",
+    "config": "^1.24.0",
+    "gulp": "^3.9.1",
+    "jsonfile": "^2.4.0",
+    "lodash": "^4.17.4",
+    "sprintf-js": "^1.0.3",
+    "winston": "^2.3.0",
+    "yargs": "^6.5.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "chai-things": "^0.2.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6",
+    "sinon-as-promised": "^4.0.2"
+  }
+}
