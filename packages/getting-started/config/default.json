@@ -2,7 +2,7 @@
   "gettingstarted": {
        "participantId" : "WebAppAdmin",
        "participantPwd" :"DJY27pEnl16d",
-       "businessNetworkIdentifier" : "@ibm/digitalproperty-network",
+       "businessNetworkIdentifier" : "digitalproperty-network",
        "connectionProfile" :"defaultProfile"
     }
 }

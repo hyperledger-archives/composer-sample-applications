@@ -22,7 +22,7 @@
 
 // Load the IBM  (Blockchain Solutions Framework) library.
 
-const BusinessNetworkConnection = require('@ibm/concerto-client').BusinessNetworkConnection;
+const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
 const Table = require('cli-table');
 const winston = require('winston');
 let config = require('config').get('gettingstarted');

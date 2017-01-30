@@ -11,11 +11,12 @@ cd ${DIR}/scripts
 docker-compose kill && docker-compose down
 
 # TODO change this to alter the default profile which is, by convention, a local running hyperledger fabric
-rm -rf ~/.concerto-connection-profiles/defaultProfile/*
-rm -rf ~/.concerto-credentials/*
+rm -rf ~/.composer-connection-profiles/defaultProfile/*
+rm -rf ~/.composer-credentials/*
 
 
 # delete all existing containers and images
+# This is not used in general usage but this might
 #read -p "Press y to delete all docker containers images" -n 1 -r
 #echo    # (optional) move to a new line
 #if [[ $REPLY =~ ^[Yy]$ ]]

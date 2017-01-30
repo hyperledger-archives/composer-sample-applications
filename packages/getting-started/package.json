@@ -11,12 +11,12 @@
     "startHLF": "scripts/start-hyperledger.sh",
     "stopHLF": "scripts/stop-hyperledger.sh",
     "teardownHLF": "scripts/teardown.sh",
-    "deployNetwork": "concerto archive create -m @ibm/digitalproperty-network --archiveFile digitalPropertyNetwork.zip && concerto network deploy --archiveFile digitalPropertyNetwork.zip  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && concerto network list -n @ibm/digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
+    "deployNetwork": "concerto archive create -m digitalproperty-network --archiveFile digitalPropertyNetwork.zip && concerto network deploy --archiveFile digitalPropertyNetwork.zip  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && concerto network list -n @ibm/digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
     "install": "scripts/download-hyperledger.sh && scripts/start-hyperledger.sh && npm run deployNetwork"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.ibm.com:Blockchain-WW-Labs/Concerto-GettingStarted"
+    "url": "git@github.com:fabric-composer/sample-applications"
   },
   "keywords": [
     "Blockchain",
@@ -29,12 +29,11 @@
   "author": "IBM",
   "license": "ISC",
   "dependencies": {
-    "@ibm/concerto-admin": "~0.3.0-0",
-    "@ibm/concerto-client": "~0.3.0-0",
-    "@ibm/digitalproperty-network": "latest",
+    "composer-admin": "~0.3.0-0",
+    "composer-client": "~0.3.0-0",
+    "digitalproperty-network": "latest",
     "cli-table": "^0.3.1",
     "config": "^1.24.0",
-    "gulp": "^3.9.1",
     "jsonfile": "^2.4.0",
     "lodash": "^4.17.4",
     "sprintf-js": "^1.0.3",
