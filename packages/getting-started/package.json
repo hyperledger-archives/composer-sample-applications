@@ -11,7 +11,7 @@
     "startHLF": "scripts/start-hyperledger.sh",
     "stopHLF": "scripts/stop-hyperledger.sh",
     "teardownHLF": "scripts/teardown.sh",
-    "deployNetwork": "concerto archive create -m digitalproperty-network --archiveFile digitalPropertyNetwork.zip && concerto network deploy --archiveFile digitalPropertyNetwork.zip  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && concerto network list -n @ibm/digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
+    "deployNetwork": "composer archive create -m digitalproperty-network --archiveFile digitalPropertyNetwork.zip && composer network deploy --archiveFile digitalPropertyNetwork.zip  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && composer network list -n digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
     "install": "scripts/download-hyperledger.sh && scripts/start-hyperledger.sh && npm run deployNetwork"
   },
   "repository": {
@@ -29,8 +29,8 @@
   "author": "IBM",
   "license": "ISC",
   "dependencies": {
-    "composer-admin": "~0.3.0-0",
-    "composer-client": "~0.3.0-0",
+    "composer-admin": "~0.4.0-0",
+    "composer-client": "~0.4.0-0",
     "digitalproperty-network": "latest",
     "cli-table": "^0.3.1",
     "config": "^1.24.0",

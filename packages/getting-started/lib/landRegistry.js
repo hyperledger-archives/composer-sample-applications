@@ -118,14 +118,17 @@ class LandRegistry {
         owner.firstName = 'Fred';
         owner.lastName = 'Bloggs';
 
+        /** Create a new relationship for the owner */
+        let ownerRelation = factory.newRelationship('net.biz.digitalPropertyNetwork', 'Person', 'PID:1234567890');
+
         LOG.info('LandRegistry:_bootstrapTitles', 'Creating a land title#1');
         let landTitle1 = factory.newInstance('net.biz.digitalPropertyNetwork', 'LandTitle', 'LID:1148');
-        landTitle1.owner = owner;
+        landTitle1.owner = ownerRelation;
         landTitle1.information = 'A nice house in the country';
 
         LOG.info('LandRegistry:_bootstrapTitles', 'Creating a land title#2');
         let landTitle2 = factory.newInstance('net.biz.digitalPropertyNetwork', 'LandTitle', 'LID:6789');
-        landTitle2.owner = owner;
+        landTitle2.owner = ownerRelation;
         landTitle2.information = 'A small flat in the city';
 
         LOG.info('LandRegistry:_bootstrapTitles', 'Adding these to the registry');
@@ -152,16 +155,23 @@ class LandRegistry {
     listTitles() {
         const METHOD = 'listTitles';
 
+        let landTitleRegistry;
+        let personRegistry;
+
         LOG.info(METHOD, 'Getting the asset registry');
     // get the land title registry and then get all the files.
         return this.bizNetworkConnection.getAssetRegistry('net.biz.digitalPropertyNetwork.LandTitle')
       .then((registry) => {
+          landTitleRegistry = registry;
+
+          return this.bizNetworkConnection.getParticipantRegistry('net.biz.digitalPropertyNetwork.Person');
+        }).then((registry)  => {
+          personRegistry = registry;
 
           LOG.info(METHOD, 'Getting all assest from the registry.');
-          return registry.getAll();
+          return landTitleRegistry.resolveAll();
 
-      })
-
+        })
 
     .then((aResources) => {
 
@@ -174,6 +184,8 @@ class LandRegistry {
         for(let i = 0; i < arrayLength; i++) {
 
             let tableLine = [];
+
+
 
             tableLine.push(aResources[i].titleId);
             tableLine.push(aResources[i].owner.personId);
