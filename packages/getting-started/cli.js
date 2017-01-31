@@ -25,20 +25,20 @@ winston.loggers.add('application', {
     console: {
         level: 'silly',
         colorize: true,
-        label: 'Handel'
+        label: 'Composer-GettingStarted'
     }
 });
 
 const LOG = winston.loggers.get('application');
 
-LOG.info('IBM Concerto: Handel appliation');
+LOG.info('Fabric Composer: Getting Started appliation');
 
 require('yargs')
-  .usage ('IBM Concerto: handel <participant> <action>')
+  .usage ('node cli.js  <participant> <action>')
   .commandDir('lib/cmds')
-  .demand(1,'Please specify a partipant, for example:   handel landregistry <action>')
+  .demand(1,'Please specify a partipant, for example:   node cli.js  landregistry <action>')
   .help()
   .strict()
   .recommendCommands()
-  .epilogue('For more information visit us at https://pages.github.ibm.com/Blockchain-WW-Labs/Concerto/')
+  .epilogue('For more information visit us at https://fabric-composer.github.io')
   .argv;
