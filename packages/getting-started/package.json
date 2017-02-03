@@ -29,8 +29,8 @@
   "author": "IBM",
   "license": "ISC",
   "dependencies": {
-    "composer-admin": "~0.4.0-0",
-    "composer-client": "~0.4.0-0",
+    "composer-admin": "~0.4.1-0",
+    "composer-client": "~0.4.1-0",
     "digitalproperty-network": "latest",
     "cli-table": "^0.3.1",
     "config": "^1.24.0",
@@ -41,6 +41,7 @@
     "yargs": "^6.5.0"
   },
   "devDependencies": {
+    "composer-connector-embedded": "*",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chai-things": "^0.2.0",
