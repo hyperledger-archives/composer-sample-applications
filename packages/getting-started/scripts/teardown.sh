@@ -11,7 +11,7 @@ cd ${DIR}/scripts
 docker-compose kill && docker-compose down
 
 # remove the local state
-rm -rf ~/.concerto-connection-profiles/defaultProfile
-rm -f ~/.concerto-credentials/*
+rm -rf ~/.composer-connection-profiles/defaultProfile
+rm -f ~/.composer-credentials/*
 
 # Your system is now clean

@@ -20,13 +20,12 @@
   },
   "keywords": [
     "Blockchain",
-    "IBM",
     "Solutions",
     "Framework",
     "getting-started",
     "Fabric Composer"
   ],
-  "author": "IBM",
+  "author": "Author",
   "license": "ISC",
   "dependencies": {
     "composer-admin": "~0.4.1-0",

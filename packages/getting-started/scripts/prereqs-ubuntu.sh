@@ -20,9 +20,7 @@ if [[ $1 == "docker" ]]; then
 	# Use pip to install Docker Compose
 	sudo pip install docker-compose
 
-	# Login to npm Whitewater registry
-	echo "Logging into: https://npm-registry.whitewater.ibm.com"
-	npm login --registry=https://npm-registry.whitewater.ibm.com --scope=@ibm
+	echo "Finished install"
 else
 # Update package lists
 sudo apt-get update

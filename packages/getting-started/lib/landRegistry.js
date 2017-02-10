@@ -20,7 +20,6 @@
 
 'use strict';
 
-// Load the IBM  (Blockchain Solutions Framework) library.
 
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
 const Table = require('cli-table');
@@ -38,7 +37,7 @@ class LandRegistry {
 
   /**
    * Need to have the mapping from bizNetwork name to the URLs to connect to.
-   * bizNetwork nawme will be able to be used by concerto to get the suitable model files.
+   * bizNetwork nawme will be able to be used by Composer to get the suitable model files.
    *
    */
     constructor() {
@@ -48,7 +47,7 @@ class LandRegistry {
         this.businessNetworkIdentifier = config.get('businessNetworkIdentifier');
     }
 
-  /** @description Initalizes the LandRegsitry by making a connection to the Concerto runtime
+  /** @description Initalizes the LandRegsitry by making a connection to the Composer runtime
    * @return {Promise} A promise whose fullfillment means the initialization has completed
    */
     init() {
