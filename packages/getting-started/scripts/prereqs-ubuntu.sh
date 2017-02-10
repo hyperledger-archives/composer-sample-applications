@@ -44,10 +44,11 @@ EOF
 source ~/.profile
 
 # Install node and npm
-nvm install 4.6.2
+nvm install 6.9.5
 
-# Configure nvm to use version 4.6.2
-nvm use 4.6.2
+# Configure nvm to use version 6.9.5
+nvm use 6.9.5
+nvm alias default 6.9.5
 
 # Install the latest version of npm
 npm install npm@latest -g
