@@ -7,7 +7,7 @@ set -ev
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 #
-cd ${DIR}/scripts
+cd "${DIR}"/scripts
 
 # Start up the Hyperledger Fabric
 docker-compose up -d --build
