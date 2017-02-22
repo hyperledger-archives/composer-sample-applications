@@ -15,8 +15,8 @@ if [[ $1 == "docker" ]]; then
 	# You will need to have logged out and logged back in order after running the first script for this script to work!
 
 	# Install docker compose
-	curl -L "https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-	chmod +x /usr/local/bin/docker-compose
+	sudo curl -L "https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	sudo chmod +x /usr/local/bin/docker-compose
 
 	echo "Finished install"
 else
