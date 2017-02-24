@@ -11,7 +11,7 @@
     "startHLF": "scripts/start-hyperledger.sh",
     "stopHLF": "scripts/stop-hyperledger.sh",
     "teardownHLF": "scripts/teardown.sh",
-    "deployNetwork": "composer archive create -m digitalproperty-network --archiveFile digitalPropertyNetwork.bna && composer network deploy --archiveFile digitalPropertyNetwork.bna  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && composer network list -n digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
+    "deployNetwork": "composer archive create --sourceType module --sourceName digitalproperty-network --archiveFile digitalPropertyNetwork.bna && composer network deploy --archiveFile digitalPropertyNetwork.bna  --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d && composer network list -n digitalproperty-network --enrollId WebAppAdmin --enrollSecret DJY27pEnl16d",
     "install": "scripts/download-hyperledger.sh && scripts/start-hyperledger.sh && npm run deployNetwork"
   },
   "repository": {
