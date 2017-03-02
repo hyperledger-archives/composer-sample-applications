@@ -6,20 +6,15 @@
 #
 # User must then logout and login
 #
-# ./prereqs-ubuntu.sh docker
-#
-# Pre-requisites will now be installed
+
+## check the version of ubuntu
+# cat /etc/lsb-release | awk -F= -f ubutnu-version.awk
+#if [ $? -eq 1 ]; then 
+#  echo "This script is specifically for Ubuntu 14.04"
+#  exit 1
+#fi 
 
 
-if [[ $1 == "docker" ]]; then
-	# You will need to have logged out and logged back in order after running the first script for this script to work!
-
-	# Install docker compose
-	sudo curl -L "https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-	sudo chmod +x /usr/local/bin/docker-compose
-
-	echo "Finished install"
-else
 # Update package lists
 sudo apt-get update
 
@@ -77,7 +72,18 @@ sudo apt-get -y install docker-engine=1.12.3-0~trusty
 # Modify user account
 sudo usermod -aG docker $(whoami)
 
-# You will need to logout in order for these changes to take effect!
-echo "Please logout then login before running: ./prereqs-ubuntu.sh docker"
 
-fi
+# Install docker compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+echo "Installation done, versions installed are"
+node --version
+npm --version
+docker --version
+docker-composer --version
+
+
+# You will need to logout in order for these changes to take effect!
+echo "Please logout then login before continuing."
+
