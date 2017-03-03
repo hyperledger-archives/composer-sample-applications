@@ -8,11 +8,15 @@
 #
 
 ## check the version of ubuntu
-# cat /etc/lsb-release | awk -F= -f ubutnu-version.awk
-#if [ $? -eq 1 ]; then 
-#  echo "This script is specifically for Ubuntu 14.04"
-#  exit 1
-#fi 
+source /etc/lsb-release || echo "Release information not found"
+
+if [ "$DISTRIB_RELEASE" == "14.04"  ]; then
+  echo "Installing Fabric Composer prereqs for Ubuntu 14.04"
+else
+  echo "This script is specifically for Ubuntu 14.04"
+  exit 1;
+fi
+
 
 
 # Update package lists
@@ -77,11 +81,16 @@ sudo usermod -aG docker $(whoami)
 sudo curl -L "https://github.com/docker/compose/releases/download/1.10.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
+echo ""
 echo "Installation done, versions installed are"
+echo "Node:"
 node --version
+echo "npm:"
 npm --version
+echo "docker:"
 docker --version
-docker-composer --version
+echo "docker-compose:"
+docker-compose --version
 
 
 # You will need to logout in order for these changes to take effect!
