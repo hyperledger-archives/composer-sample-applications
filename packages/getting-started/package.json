@@ -4,6 +4,7 @@
   "description": "The repository for the Fabric Composer Getting Started application",
   "main": "index.js",
   "scripts": {
+    "preinstall": "composer --version || echo 'Please first run npm install -g composer-cli' && exit 1",
     "test": "mocha --recursive && npm run bootstrapAssets && npm run listAssets && npm run submitTransaction",
     "submitTransaction": "node cli.js landregistry submit && node cli.js landregistry list",
     "listAssets": "node cli.js landregistry list",
