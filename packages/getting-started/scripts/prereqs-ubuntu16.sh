@@ -2,7 +2,7 @@
 
 # Usage:
 #
-# ./prereqs-ubuntu.sh
+# ./prereqs-ubuntu16.sh
 #
 # User must then logout and login
 #
