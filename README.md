@@ -1,6 +1,6 @@
 # Fabric Composer Sample Applications
 
-The repository contains sample applications written against the Fabric Composer client and admin APIs. 
+The repository contains sample applications written against the [Fabric Composer](https://github.com/fabric-composer/fabric-composer) [client and admin APIs](https://fabric-composer.github.io/jsdoc/index.html). 
 
 Currently this contains the code and scripts for the ['Getting Started'](https://fabric-composer.github.io/start/quickstart.html) tutorial.
 
