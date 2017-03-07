@@ -5,3 +5,6 @@ dist: trusty
 before_install: ./.travis/before-install.sh
 script: ./.travis/script.sh
 sudo: false
+notifications:
+  pushover:
+    api_key: ayq7zvsxc641sfna65njkik1x9y25b
