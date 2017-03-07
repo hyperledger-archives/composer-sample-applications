@@ -3,7 +3,7 @@
 # Exit on first error, print all commands.
 set -ev
 
-# Grab the current directorydirectory.
+# Grab the current directory.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 # remove existing profiles and credentials

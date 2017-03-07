@@ -1,0 +1,12 @@
+{
+  "name": "systest-acceptance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "systest" : "./getting-started.sh"
+  },
+  "author": "",
+  "license": "ISC"
+}
