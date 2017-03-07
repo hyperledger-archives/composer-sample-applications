@@ -1,9 +1,14 @@
 language: node_js
-node_js:
-- '6'
+
 matrix:
     include:
         - env: SYSTEST=getting-started FC_TASK=systest
+          sudo: required
+          services:
+            - docker
+          node_js:
+            - '6'
+        
 dist: trusty
 before_install: ./.travis/before-install.sh
 script: ./.travis/script.sh
