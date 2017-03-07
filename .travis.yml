@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '6'
+matrix:
+    include:
+        - env: SYSTEST=getting-started FC_TASK=systest
 dist: trusty
 before_install: ./.travis/before-install.sh
 script: ./.travis/script.sh
