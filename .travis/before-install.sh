@@ -12,6 +12,7 @@ npm install -g npm
 echo "ABORT_BUILD=false" > ${DIR}/build.cfg
 echo "ABORT_CODE=0" >> ${DIR}/build.cfg
 
+echo ${TRAVIS_BUILD_ID}
 
 #
 echo "->- Build cfg being used"
