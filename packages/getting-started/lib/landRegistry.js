@@ -77,16 +77,14 @@ class LandRegistry {
 
       }).then((result) => {
 
-          let serializer = this.businessNetworkDefinition.getSerializer();
+	      let factory        = this.businessNetworkDefinition.getFactory();
+	      let transaction    = factory.newTransaction('net.biz.digitalPropertyNetwork','RegisterPropertyForSale');		
+		  transaction.title  = factory.newRelationship('net.biz.digitalPropertyNetwork', 'LandTitle', 'LID:1148');
+		  transaction.seller = factory.newRelationship('net.biz.digitalPropertyNetwork', 'Person', 'PID:1234567890'); 	
 
-          let resource = serializer.fromJSON({
-              '$class': 'net.biz.digitalPropertyNetwork.RegisterPropertyForSale',
-              'seller': 'PID:1234567890',
-              'title': 'LID:1148'
-          });
           LOG.info(METHOD, 'Submitting transaction');
 
-          return this.bizNetworkConnection.submitTransaction(resource);
+          return this.bizNetworkConnection.submitTransaction(transaction);
       }) // and catch any exceptions that are triggered
       .catch(function (error) {
           LOG.error('LandRegsitry:updateForSale', error);
@@ -277,7 +275,6 @@ class LandRegistry {
 
     .then((results) => {
         LOG.info('Transaction Submitted');
-        console.log(results);
     })
       .catch(function (error) {
         /* potentially some code for generating an error specific message here */
