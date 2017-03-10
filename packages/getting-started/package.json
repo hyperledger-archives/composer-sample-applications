@@ -29,11 +29,11 @@
   "author": "Author",
   "license": "ISC",
   "dependencies": {
-    "composer-admin": "~0.4.1-0",
-    "composer-client": "~0.4.1-0",
-    "digitalproperty-network": "latest",
     "cli-table": "^0.3.1",
+    "composer-admin": "^0.4.5",
+    "composer-client": "^0.4.5",
     "config": "^1.24.0",
+    "digitalproperty-network": "latest",
     "jsonfile": "^2.4.0",
     "lodash": "^4.17.4",
     "sprintf-js": "^1.0.3",
@@ -41,10 +41,10 @@
     "yargs": "^6.5.0"
   },
   "devDependencies": {
-    "composer-connector-embedded": "*",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chai-things": "^0.2.0",
+    "composer-connector-embedded": "^0.4.5",
     "mocha": "^3.2.0",
     "sinon": "^1.17.6",
     "sinon-as-promised": "^4.0.2"
