@@ -38,11 +38,11 @@ cd "$TMP"
 
 git clone https://github.com/fabric-composer/sample-networks
 
-cd "$TMP/sample-networks/packages/DigitalProperty-Network"
+cd "$TMP/sample-networks/packages/digitalproperty-network"
 
 npm install
 
-TRANSACTION_FILE=$TMP/sample-networks/packages/DigitalProperty-Network/lib/DigitalLandTitle.js
+TRANSACTION_FILE=$TMP/sample-networks/packages/digitalproperty-network/lib/DigitalLandTitle.js
 
 rm "$TRANSACTION_FILE"
 
