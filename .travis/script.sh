@@ -10,26 +10,39 @@ ME=`basename "$0"`
 
 echo ${ME} `date`
 
-source ${DIR}/build.cfg
-source ${HOME}/.nvm/nvm.sh
+#source ${DIR}/build.cfg
 
-if [ "${ABORT_BUILD}" = "true" ]; then
-  echo "-#- exiting early from ${ME}"
-  exit ${ABORT_CODE}
-fi
+#if [ "${ABORT_BUILD}" = "true" ]; then
+#  echo "-#- exiting early from ${ME}"
+#  exit ${ABORT_CODE}
+#fi
 
-cd ${DIR} && pwd
+#cd ${DIR} && pwd
 
 
-if [ "${SYSTEST}" != "" ]; then
+cd "${DIR}"
 
-    # Run the system tests.
-    lerna run systest    
-    
-# We must be running unit tests.
-else
+mkdir ./fabric-tools && cd ./fabric-tools
 
-    lerna run test
-fi
+# this should be moved to a better location
+curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.zip
+
+unzip fabric-dev-servers.zip
+./downloadFabric.sh
+./startFabric.sh
+./createComposerProfile.sh
+
+# change into the repo direcoty
+cd "${DIR}"
+npm install
+cd packages/digitalproperty-app
+npm run deployNetwork
+npm test
+
+
+cd "${DIR}"/fabric-tools
+./stopFabric.sh
+./teardownFabric.sh
+
 
 exit 0
