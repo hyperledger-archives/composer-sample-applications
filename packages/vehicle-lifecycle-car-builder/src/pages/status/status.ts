@@ -18,6 +18,8 @@ export class StatusPage {
   stage: Array<String>;
   relativeDate: any;
   config: any;
+  insureWebsocket: any;
+  order: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
     this.car = navParams.get('car');
@@ -39,14 +41,14 @@ export class StatusPage {
 
     let statuses = ['PLACED', 'SCHEDULED_FOR_MANUFACTURE', 'VIN_ASSIGNED', 'OWNER_ASSIGNED', 'DELIVERED'];
 
-    var websocket;
+    let websocket;
 
     var openWebSocket = () => {
       var webSocketURL;
-      if (this.config.useLocalWS){
+      if (this.config.useLocalWS) {
         webSocketURL = 'ws://' + location.host + '/ws/updateorderstatus';
       } else {
-        webSocketURL = this.config.nodeRedBaseURL+'/ws/updateorderstatus';
+        webSocketURL = this.config.nodeRedBaseURL + '/ws/updateorderstatus';
       }
       console.log('connecting websocket', webSocketURL);
       websocket = new WebSocket(webSocketURL);
@@ -56,7 +58,7 @@ export class StatusPage {
       };
 
       websocket.onclose = function() {
-        console.log('closed');
+        console.log('closed updateorderstatus');
         openWebSocket();
       }
 
@@ -66,6 +68,11 @@ export class StatusPage {
         }
 
         var status = JSON.parse(event.data);
+
+        if (status.order) {
+          this.order = status.order;
+        }
+
         if (status.orderStatus === statuses[0]) {
           this.stage[0] = status.timestamp;
         } else {
@@ -75,10 +82,31 @@ export class StatusPage {
       };
     }
 
+    var openInsureWebSocket = () => {
+      let insureWebSocketURL;
+      if (this.config.useLocalWS) {
+        insureWebSocketURL = 'ws://' + location.host + '/ws/insurecar';
+      } else {
+        insureWebSocketURL = this.config.nodeRedBaseURL + '/ws/insurecar';
+      }
+      console.log('connecting websocket', insureWebSocketURL);
+      this.insureWebsocket = new WebSocket(insureWebSocketURL);
+
+      this.insureWebsocket.onopen = function () {
+        console.log('insurecar websocket open!');
+      };
+
+      this.insureWebsocket.onclose = function() {
+        console.log('closed insurecar');
+        openInsureWebSocket();
+      }
+    }
+
     this.loadConfig()
       .then((config) => {
         this.config = config;
         openWebSocket();
+        openInsureWebSocket();
       });
   }
 
@@ -87,5 +115,11 @@ export class StatusPage {
       return this.http.get('/assets/config.json')
       .map((res: Response) => res.json())
       .toPromise();
+  }
+
+  insure() {
+    if (this.order) {
+      this.insureWebsocket.send(JSON.stringify(this.order));
+    }
   }
 }

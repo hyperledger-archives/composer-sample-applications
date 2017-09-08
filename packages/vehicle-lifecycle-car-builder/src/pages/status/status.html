@@ -64,7 +64,11 @@
     <span class="connector"></span>
   </div>
 
-  <ion-card>
+  <ion-card class="single-content-card">
     <button ion-button color="white" [ngClass]="{selected: stage[4]}">Delivery <img src="assets/diamond.svg"></button>
+  </ion-card>
+
+  <ion-card class="single-content-card">
+    <button ion-button color="secondary" [disabled]="!stage[4]" (click)="insure()">Insure this car <img src="assets/arrow_right.svg"></button>
   </ion-card>
 </ion-content>
