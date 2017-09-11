@@ -40,7 +40,8 @@ export class StatusPage {
           timestamp: data.timestamp
         };
 
-        if (this.locationWebsocket) {
+        if (this.locationWebsocket && this.locationWebsocket.readyState === 1) {
+          console.log('sending location', this.location);
           this.locationWebsocket.send(JSON.stringify(this.location));
         }
       } else {
