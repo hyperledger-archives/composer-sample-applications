@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Response } from '@angular/http';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the StatusPage page.
@@ -19,11 +20,33 @@ export class StatusPage {
   relativeDate: any;
   config: any;
   insureWebsocket: any;
+  locationWebsocket: any;
   order: any;
+  location: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private geolocation: Geolocation) {
     this.car = navParams.get('car');
     this.stage = [Date.now() + ''];
+
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      if (data.coords) {
+        this.location = {
+          coords: {
+            latitude: data.coords.latitude,
+            longitude: data.coords.longitude,
+            accuracy: data.coords.accuracy
+          },
+          timestamp: data.timestamp
+        };
+
+        if (this.locationWebsocket) {
+          this.locationWebsocket.send(JSON.stringify(this.location));
+        }
+      } else {
+       console.log('Error getting location', data);
+      }
+    });
 
     this.relativeDate = function(input, start) {
       if (input) {
@@ -102,11 +125,35 @@ export class StatusPage {
       }
     }
 
+    var openLocationWebSocket = () => {
+      let locationWebSocketURL;
+      if (this.config.useLocalWS) {
+        locationWebSocketURL = 'ws://' + location.host + '/ws/location';
+      } else {
+        locationWebSocketURL = this.config.nodeRedBaseURL + '/ws/location';
+      }
+      console.log('connecting websocket', locationWebSocketURL);
+      this.locationWebsocket = new WebSocket(locationWebSocketURL);
+
+      this.locationWebsocket.onopen = () => {
+        console.log('location websocket open!');
+        if (this.location) {
+          this.locationWebsocket.send(JSON.stringify(this.location));
+        }
+      };
+
+      this.locationWebsocket.onclose = function() {
+        console.log('closed location');
+        openLocationWebSocket();
+      }
+    }
+
     this.loadConfig()
       .then((config) => {
         this.config = config;
         openWebSocket();
         openInsureWebSocket();
+        openLocationWebSocket();
       });
   }
 
