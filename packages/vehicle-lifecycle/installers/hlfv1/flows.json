@@ -24,17 +24,10 @@
         "wholemsg": "false"
     },
     {
-        "id": "a5b5c2ca.76bf2",
+        "id": "c1360260.1776b",
         "type": "websocket-listener",
         "z": "",
-        "path": "/ws/placeorder",
-        "wholemsg": "false"
-    },
-    {
-        "id": "47184e15.1506b",
-        "type": "websocket-listener",
-        "z": "",
-        "path": "/ws/updateorderstatus",
+        "path": "/ws/insurecar",
         "wholemsg": "false"
     },
     {
@@ -222,7 +215,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 712,
@@ -286,7 +279,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 711.5,
@@ -350,7 +343,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 711.5,
@@ -414,7 +407,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "false",
         "x": 710.5,
@@ -600,7 +593,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "event received",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "true",
         "x": 356,
@@ -645,7 +638,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "received PlaceOrder socket msg",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "true",
         "x": 411,
@@ -717,7 +710,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "transaction payload",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "payload",
         "x": 864.5,
@@ -745,7 +738,7 @@
         "type": "debug",
         "z": "cffe8c3.a09aa7",
         "name": "transaction payload",
-        "active": true,
+        "active": false,
         "console": "false",
         "complete": "payload",
         "x": 838.5,
@@ -862,5 +855,44 @@
                 "512c1781.10e118"
             ]
         ]
+    },
+    {
+        "id": "fd84568e.2dc9a8",
+        "type": "websocket in",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "server": "c1360260.1776b",
+        "client": "",
+        "x": 150,
+        "y": 900,
+        "wires": [
+            [
+                "380dd6f7.cd8e2a",
+                "47fb4872.90c8b8"
+            ]
+        ]
+    },
+    {
+        "id": "380dd6f7.cd8e2a",
+        "type": "debug",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 350,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "47fb4872.90c8b8",
+        "type": "websocket out",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "server": "c1360260.1776b",
+        "client": "",
+        "x": 370,
+        "y": 940,
+        "wires": []
     }
 ]
