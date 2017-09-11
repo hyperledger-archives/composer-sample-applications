@@ -31,6 +31,13 @@
         "wholemsg": "false"
     },
     {
+        "id": "ea6ed36f.0128e",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/location",
+        "wholemsg": "false"
+    },
+    {
         "id": "2a6c9e97.ed1452",
         "type": "websocket in",
         "z": "cffe8c3.a09aa7",
@@ -868,7 +875,7 @@
         "wires": [
             [
                 "380dd6f7.cd8e2a",
-                "47fb4872.90c8b8"
+                "ce150107.9495a"
             ]
         ]
     },
@@ -880,7 +887,7 @@
         "active": true,
         "console": "false",
         "complete": "false",
-        "x": 350,
+        "x": 470,
         "y": 900,
         "wires": []
     },
@@ -891,8 +898,97 @@
         "name": "",
         "server": "c1360260.1776b",
         "client": "",
-        "x": 370,
+        "x": 590,
         "y": 940,
         "wires": []
+    },
+    {
+        "id": "6534230f.2954fc",
+        "type": "websocket in",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "server": "ea6ed36f.0128e",
+        "client": "",
+        "x": 140,
+        "y": 1020,
+        "wires": [
+            [
+                "5bd24069.adb95",
+                "fec9e96f.85dc28"
+            ]
+        ]
+    },
+    {
+        "id": "5bd24069.adb95",
+        "type": "debug",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 350,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "b3ced177.fe449",
+        "type": "websocket out",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "server": "ea6ed36f.0128e",
+        "client": "",
+        "x": 590,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "fec9e96f.85dc28",
+        "type": "change",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "_session",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1060,
+        "wires": [
+            [
+                "b3ced177.fe449"
+            ]
+        ]
+    },
+    {
+        "id": "ce150107.9495a",
+        "type": "change",
+        "z": "cffe8c3.a09aa7",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "_session",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 940,
+        "wires": [
+            [
+                "47fb4872.90c8b8"
+            ]
+        ]
     }
 ]
