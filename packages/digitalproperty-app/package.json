@@ -1,6 +1,6 @@
 {
   "name": "digitalproperty-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Hyperledger Composer - Digital Property console application",
   "bin": {
     "digitalproperty": "cli.js"
