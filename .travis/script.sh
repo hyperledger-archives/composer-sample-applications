@@ -18,20 +18,20 @@ echo ${ME} `date`
 #  exit ${ABORT_CODE}
 #fi
 
-#cd ${DIR} && pwd
+cd ${DIR} && pwd
 
-
-cd "${DIR}"
-
-mkdir ./fabric-tools && cd ./fabric-tools
+mkdir "${DIR}"/fabric-tools 
 
 # this should be moved to a better location
-curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.zip
+curl --output "${DIR}"/fabric-tools/fabric-dev-servers.zip https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.zip
 
-unzip fabric-dev-servers.zip
-./downloadFabric.sh
-./startFabric.sh
-./createComposerProfile.sh
+unzip "${DIR}"/fabric-tools/fabric-dev-servers.zip -d "${DIR}"/fabric-tools
+npm install -g composer-cli@latest
+export PATH=$(npm bin -g):$PATH
+
+"${DIR}"/fabric-tools/downloadFabric.sh
+"${DIR}"/fabric-tools/startFabric.sh
+"${DIR}"/fabric-tools/createPeerAdminCard.sh
 
 # change into the repo directory
 cd "${DIR}"
@@ -44,6 +44,7 @@ npm test
 cd "${DIR}"/fabric-tools
 ./stopFabric.sh
 ./teardownFabric.sh
+
 
 # Build the car builder application.
 cd "${DIR}/packages/vehicle-lifecycle-car-builder"
