@@ -34,6 +34,9 @@ if [[ "${TRAVIS_REPO_SLUG}" != hyperledger* ]]; then
     exit 0
 fi
 
+# Set the NPM access token we will use to publish.
+npm config set registry https://registry.npmjs.org/
+npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
 
 # Set the GitHub deploy key we will use to publish.
 set-up-ssh --key "$encrypted_c6d9af089ec4_key" \
